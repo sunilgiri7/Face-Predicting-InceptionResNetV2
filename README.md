@@ -6,8 +6,10 @@
 This is a quick guide of how to get set up and running a robust real-time facial recognition system using the Pretraiend Facenet Model and MTCNN.
 
 1. Make a directory of your name inside the Faces folder and upload your 2-3 pictures of you.
-2. Run ``` train_v2.py```.
-3. Then run ```detect.py``` for realtime face recognization.
+2. create python3.12 version env and activate
+3. install requirements.txt file
+4. Run ``` train_v2.py```.
+5. Then run ```detect.py``` for realtime face recognization.
 
 For in depth explanation follow this amazingly expained [article. 👈](https://arsfutura.com/magazine/face-recognition-with-facenet-and-mtcnn/)
 
