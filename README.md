@@ -21,3 +21,8 @@ mtcnn
 scikit-learn
 scipy
 ```
+contact for any project related queries
+```
+Email: seungiri841@gmail.com
+skype: sunil giri
+```

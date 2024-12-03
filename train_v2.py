@@ -1,4 +1,3 @@
-import pyheif
 from architecture import *
 import os
 import cv2
@@ -31,18 +30,19 @@ def normalize(img):
 # Function to convert AVIF files to JPG using pyheif
 def convert_avif_to_jpg(file_path):
     try:
-        heif_file = pyheif.read(file_path)  # Read AVIF file
-        image = Image.frombytes(
-            heif_file.mode, 
-            heif_file.size, 
-            heif_file.data, 
-            "raw", 
-            heif_file.mode, 
-            heif_file.stride
-        )
+        # Open the AVIF file using Pillow (with pillow-heif installed)
+        image = Image.open(file_path)
         new_file_path = os.path.splitext(file_path)[0] + ".jpg"
+        
+        # Convert to RGB if needed (AVIF can have alpha channels)
+        if image.mode in ("RGBA", "LA"):
+            image = image.convert("RGB")
+        
+        # Save the image as JPEG
         image.save(new_file_path, "JPEG")
-        os.remove(file_path)  # Remove original AVIF file
+        
+        # Optionally remove the original AVIF file
+        os.remove(file_path)
         print(f"Converted {file_path} to {new_file_path}")
     except Exception as e:
         print(f"Error converting {file_path}: {e}")
